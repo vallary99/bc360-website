@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #25312d;
+  --slate: #546057;
+  --forest: #16771e;
+  --leaf: #1abc42;
+  --sprout: #7ede7c;
+  --paper: #ffffff;
+  --mist: #f4f6f4;
+  --hairline: #dde3de;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-slate: var(--slate);
+  --color-forest: var(--forest);
+  --color-leaf: var(--leaf);
+  --color-sprout: var(--sprout);
+  --color-paper: var(--paper);
+  --color-mist: var(--mist);
+  --color-hairline: var(--hairline);
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--sprout);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.font-mono-tag {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* Stamp signature element */
+.stamp {
+  transform: rotate(-6deg);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Ambient float for hero accents */
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float {
+  animation: gentle-float 5s ease-in-out infinite;
+}
+
+/* WhatsApp float button pulse ring */
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.55; }
+  80%, 100% { transform: scale(1.9); opacity: 0; }
+}
+.animate-ping-slow {
+  animation: ping-slow 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
