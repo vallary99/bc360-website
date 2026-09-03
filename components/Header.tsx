@@ -19,19 +19,16 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-hairline">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="flex items-center justify-between h-[80px]">
-          <Link href="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setOpen(false)}>
+        <div className="flex items-center justify-between h-[104px]">
+          <Link href="/" className="flex items-center shrink-0 py-2" onClick={() => setOpen(false)}>
             <Image
-              src="/brand/badge-light.png"
-              alt="Build Compliance 360"
-              width={52}
-              height={52}
-              className="h-12 w-12 sm:h-[52px] sm:w-[52px]"
+              src="/brand/logo-full-light.png"
+              alt="Build Compliance 360, established 2025"
+              width={900}
+              height={735}
+              className="h-[76px] w-auto sm:h-[84px]"
               priority
             />
-            <span className="font-display font-bold text-[16px] sm:text-[18px] leading-tight text-ink">
-              Build Compliance<br />360
-            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">

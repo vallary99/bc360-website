@@ -2,12 +2,12 @@ import Link from "next/link";
 import Reveal from "./Reveal";
 
 const problems = [
-  { text: "Your approval has been pending for longer than expected.", href: "/services/stuck-approvals" },
-  { text: "You submitted documents but haven't had clear feedback.", href: "/services/stuck-approvals" },
-  { text: "You need to transfer a title deed.", href: "/services/title-deed-transfer" },
-  { text: "You want to subdivide land.", href: "/services/land-subdivision" },
-  { text: "Your bank needs property approvals verified.", href: "/services/approval-verification" },
   { text: "You need approvals before construction can start.", href: "/services/construction-approvals" },
+  { text: "You want to subdivide land.", href: "/services/land-subdivision" },
+  { text: "You need to transfer a title deed.", href: "/services/title-deed-transfer" },
+  { text: "You need to change the approved use of a property.", href: "/services/change-of-use" },
+  { text: "Your approval has been pending for longer than expected.", href: "/services/stuck-approvals" },
+  { text: "Your bank needs property approvals verified.", href: "/services/approval-verification" },
 ];
 
 export default function ProblemGrid() {
@@ -25,7 +25,7 @@ export default function ProblemGrid() {
 
         <div className="mt-9 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
           {problems.map((p, i) => (
-            <Reveal key={i} delay={i * 60}>
+            <Reveal key={i} delay={i * 60} fullHeight>
               <Link
                 href={p.href}
                 className="group h-full flex flex-col bg-white border border-hairline rounded-sm p-5 hover:border-forest hover:-translate-y-0.5 transition-all"

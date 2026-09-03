@@ -20,8 +20,8 @@ const categoryImage: Record<Service["category"], { src: string; alt: string }> =
     alt: "Nairobi city skyline seen across open ground, Kenya",
   },
   "construction-approvals": {
-    src: "https://images.unsplash.com/photo-1669333490889-194e8f46a766?fm=jpg&q=70&w=2400&auto=format&fit=crop",
-    alt: "Nairobi city skyline with tall buildings, Kenya",
+    src: "https://images.unsplash.com/photo-1542621334-a254cf47733d?fm=jpg&q=70&w=2400&auto=format&fit=crop",
+    alt: "Architectural blueprint plan being drafted with a pencil and ruler",
   },
   "bank-mortgage": {
     src: "https://images.unsplash.com/photo-1693902997450-7e912c0d3554?fm=jpg&q=70&w=2400&auto=format&fit=crop",

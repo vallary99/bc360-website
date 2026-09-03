@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 import Breadcrumbs from "./Breadcrumbs";
 import Reveal from "./Reveal";
 import type { ReactNode } from "react";
@@ -29,7 +29,7 @@ export default function PageHero({
   return (
     <section className="relative border-b border-hairline overflow-hidden">
       <div className={`relative w-full ${heightClass}`}>
-        <Image
+        <ImageWithSkeleton
           src={image.src}
           alt={image.alt}
           fill

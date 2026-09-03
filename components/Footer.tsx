@@ -22,7 +22,7 @@ export default function Footer() {
               className="w-[150px] h-auto mb-5"
             />
             <p className="text-[14px] leading-relaxed text-white/60 max-w-[220px]">
-              Helping property owners and developers navigate construction, land and compliance processes across Kenya.
+              Helping property owners and developers navigate construction, land and compliance processes across Kiambu, Nairobi, Murang&apos;a and Nakuru.
             </p>
           </div>
 

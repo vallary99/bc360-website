@@ -14,13 +14,17 @@ import { featuredServices } from "@/lib/services";
 import { faqSchema, toJsonLd } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Construction, Land & Compliance Consultancy in Kenya",
+  title: "Construction Compliance & Approvals Consultancy in Kenya",
   description:
-    "Stuck on a building or land approval in Kenya? Build Compliance 360 helps with stuck approvals, land subdivision, title transfers, construction approvals and bank/mortgage compliance in Kiambu, Nairobi, Murang'a and Nakuru.",
+    "Build Compliance 360 guides construction approvals, from architectural and structural sign-off to NEMA, NCA and change of use, plus land subdivision, title transfers and stuck applications in Kiambu, Nairobi, Murang'a and Nakuru.",
   alternates: { canonical: "/" },
 };
 
 const homeFaqs = [
+  {
+    q: "What approvals are required before construction in Kenya?",
+    a: "Most projects require architectural and structural approval, and depending on scale and location, NEMA and NCA registration. Some projects also require a change of use approval. The exact combination depends on your project.",
+  },
   {
     q: "How long does a building approval take in Kenya?",
     a: "It depends on the county, the type of project and how complete the documentation is at submission. There's no single fixed timeline, but we can give you a clearer picture once we've reviewed your specific application.",
@@ -32,10 +36,6 @@ const homeFaqs = [
   {
     q: "Do you assist with approvals in Kiambu, Nairobi, Murang'a and Nakuru?",
     a: "Yes. These four counties are our core focus, though the underlying processes are similar across Kenya. Get in touch and let us know where your property is located.",
-  },
-  {
-    q: "Can you help verify approvals submitted to a bank?",
-    a: "Yes. We review the approval documentation provided and help explain what it covers and whether anything looks incomplete or worth confirming further before a transaction proceeds.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
               <SectionHeading
                 eyebrow="What we help with"
-                title="Compliance support across every stage of a property project"
+                title="Construction compliance first, with support across every stage of a property project"
               />
               <Link href="/services" className="text-[14px] font-medium text-forest hover:text-[#125e18] shrink-0">
                 View all services &rarr;
@@ -64,7 +64,7 @@ export default function HomePage() {
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
             {featuredServices.map((service, i) => (
-              <Reveal key={service.slug} delay={i * 70}>
+              <Reveal key={service.slug} delay={i * 70} fullHeight>
                 <ServiceCard service={service} featured={i === 0} />
               </Reveal>
             ))}

@@ -6,7 +6,7 @@ import Reveal from "@/components/Reveal";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us: Get Assistance With Your Property or Approval",
   description:
     "Get in touch with Build Compliance 360 about a stuck approval, land subdivision, title transfer, construction approval or bank/mortgage compliance need.",
   alternates: { canonical: "/contact" },

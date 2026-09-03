@@ -6,14 +6,21 @@ type Props = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  fullHeight?: boolean;
 };
 
 /**
  * Wraps a section in a subtle fade-and-rise reveal the first time it enters
  * the viewport. Respects prefers-reduced-motion via the global CSS rule that
  * zeroes out transition durations.
+ *
+ * Pass `fullHeight` when this wraps a grid card that needs to stretch to
+ * match its row (see the various card grids). Leave it off everywhere else,
+ * a hero, a heading block, anything that should size to its own content, or
+ * the wrapper will swallow the space a parent `items-center` needs to center
+ * against.
  */
-export default function Reveal({ children, className = "", delay = 0 }: Props) {
+export default function Reveal({ children, className = "", delay = 0, fullHeight = false }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   // Must start false on both server and client so the initial hydrated markup
   // matches exactly; the effect below decides when to reveal, after mount.
@@ -48,7 +55,7 @@ export default function Reveal({ children, className = "", delay = 0 }: Props) {
   return (
     <div
       ref={ref}
-      className={`reveal h-full ${visible ? "is-visible" : ""} ${className}`}
+      className={`reveal ${fullHeight ? "h-full" : ""} ${visible ? "is-visible" : ""} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

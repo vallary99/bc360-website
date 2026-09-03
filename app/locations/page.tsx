@@ -6,7 +6,7 @@ import Reveal from "@/components/Reveal";
 import { locations } from "@/lib/locations";
 
 export const metadata: Metadata = {
-  title: "Locations",
+  title: "Locations We Serve: Kiambu, Nairobi, Murang'a & Nakuru",
   description:
     "Build Compliance 360 serves property owners and developers in Kiambu, Nairobi, Murang'a and Nakuru counties.",
   alternates: { canonical: "/locations" },
@@ -21,14 +21,14 @@ export default function LocationsPage() {
           alt: "Nairobi city skyline, Kenya",
         }}
         crumbs={[{ label: "Home", href: "/" }, { label: "Locations" }]}
-        title="Where we work"
-        description="Our core focus is four counties in Central Kenya and Nairobi. Each location page covers the areas and services most relevant there."
+        title="Construction & compliance services in Kiambu, Nairobi, Murang'a and Nakuru"
+        description="These four counties are our core focus. Each location page below covers the areas and services most relevant there."
       />
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8 py-16">
         <div className="grid sm:grid-cols-2 gap-5 items-stretch">
           {locations.map((loc, i) => (
-            <Reveal key={loc.slug} delay={i * 70}>
+            <Reveal key={loc.slug} delay={i * 70} fullHeight>
               <Link
                 href={`/locations/${loc.slug}`}
                 className="group h-full flex flex-col border border-hairline rounded-sm p-7 hover:border-forest hover:-translate-y-0.5 transition-all"

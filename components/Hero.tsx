@@ -1,6 +1,5 @@
-import Image from "next/image";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 import CTAButton from "./CTAButton";
-import StatusStamp from "./StatusStamp";
 import Reveal from "./Reveal";
 import { site } from "@/lib/site";
 
@@ -8,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative border-b border-hairline overflow-hidden">
       <div className="relative h-[560px] sm:h-[620px] lg:h-[680px] w-full">
-        <Image
+        <ImageWithSkeleton
           src="https://images.unsplash.com/photo-1741991110666-88115e724741?fm=jpg&q=70&w=2400&auto=format&fit=crop"
           alt="Nairobi skyline on a sunny day"
           fill
@@ -21,19 +20,18 @@ export default function Hero() {
 
         <div className="relative h-full mx-auto max-w-6xl px-5 sm:px-8 flex items-center">
           <Reveal className="max-w-xl">
-            <StatusStamp label="Application Status: Unclear" variant="light" className="mb-7 bg-ink/30 backdrop-blur-sm" />
             <h1 className="font-display text-[36px] sm:text-[48px] lg:text-[52px] leading-[1.08] text-white text-balance">
-              Stuck on a property or construction approval?
+              Construction compliance, simplified
             </h1>
             <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-white/85 max-w-[46ch]">
-              Build Compliance 360 helps property owners, developers and mortgage clients
-              navigate construction approvals, land subdivision, title transfers and
-              compliance processes across Kenya, including applications that have already
+              Build Compliance 360 guides property owners and developers through
+              architectural, structural, NEMA, NCA and change of use approvals, alongside
+              land subdivision, title transfers and applications that have already
               stalled.
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-4">
-              <CTAButton href="/contact" size="lg">
-                Get Assistance
+              <CTAButton href="/contact?service=construction-approvals" size="lg">
+                Discuss Your Project
               </CTAButton>
               <CTAButton
                 href="/services"

@@ -9,8 +9,8 @@ export default function LocationsSection() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20">
         <SectionHeading
           eyebrow="Where we work"
-          title="Serving property owners across Central Kenya & Nairobi"
-          description="Our core focus is Kiambu, Nairobi, Murang'a and Nakuru counties, with each location page tailored to the areas and services most relevant there."
+          title="Serving Kiambu, Nairobi, Murang'a and Nakuru"
+          description="These four counties are our core focus, with each location page tailored to the areas and services most relevant there."
         />
 
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">

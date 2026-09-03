@@ -6,32 +6,32 @@ import Reveal from "@/components/Reveal";
 import { services, type Service } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Construction Approvals & Property Compliance Services",
   description:
-    "Construction approvals, land subdivision, title deed transfers and bank/mortgage compliance services for property owners and developers in Kenya.",
+    "Construction approvals, land subdivision, title deed transfers and bank/mortgage compliance services for property owners and developers in Kiambu, Nairobi, Murang'a and Nakuru.",
   alternates: { canonical: "/services" },
 };
 
 const groups: { key: Service["category"]; label: string; blurb: string }[] = [
   {
-    key: "stuck-approvals",
-    label: "Stuck Approvals",
-    blurb: "For applications that have already stalled somewhere in the process.",
+    key: "construction-approvals",
+    label: "Construction Approvals",
+    blurb: "Architectural, structural, NEMA, NCA and change of use approvals, our core focus.",
   },
   {
     key: "land",
     label: "Land & Title",
-    blurb: "Subdivision and title deed transfer support.",
-  },
-  {
-    key: "construction-approvals",
-    label: "Construction Approvals",
-    blurb: "Architectural, structural, NEMA, NCA and change of use approvals.",
+    blurb: "Subdivision, land survey and title deed transfer support.",
   },
   {
     key: "bank-mortgage",
     label: "Bank & Mortgage",
     blurb: "Approval assistance and verification for financing transactions.",
+  },
+  {
+    key: "stuck-approvals",
+    label: "Stuck Approvals",
+    blurb: "For applications that have already stalled somewhere in the process.",
   },
 ];
 
@@ -44,8 +44,8 @@ export default function ServicesPage() {
           alt: "Nairobi city skyline with tall buildings",
         }}
         crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
-        title="Compliance support for every stage of your project"
-        description="From an approval that's gone quiet to planning a subdivision or preparing documents for a bank, here's where each service fits."
+        title="Construction compliance support for every stage of your project"
+        description="Our core focus is guiding projects through construction approvals, from architectural and structural sign-off to NEMA, NCA and change of use, alongside land subdivision, title transfer and support for applications that have already stalled."
       />
 
       {groups.map((group) => {
@@ -61,7 +61,7 @@ export default function ServicesPage() {
               </Reveal>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
                 {groupServices.map((service, i) => (
-                  <Reveal key={service.slug} delay={i * 70}>
+                  <Reveal key={service.slug} delay={i * 70} fullHeight>
                     <ServiceCard service={service} />
                   </Reveal>
                 ))}

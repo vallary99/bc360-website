@@ -111,3 +111,26 @@ body {
   animation: ping-slow 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Skeleton loading shimmer */
+@keyframes skeleton-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background-color: var(--hairline);
+  background-image: linear-gradient(
+    90deg,
+    var(--hairline) 0px,
+    rgba(255, 255, 255, 0.6) 80px,
+    var(--hairline) 160px
+  );
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+

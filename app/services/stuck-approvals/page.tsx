@@ -80,7 +80,7 @@ export default function StuckApprovalsPage() {
           <SectionHeading eyebrow="Recognize the pattern" title="Signs your application is stuck, not just slow" className="mb-10" />
           <div className="grid sm:grid-cols-2 gap-5 items-stretch">
             {signs.map((sign, i) => (
-              <Reveal key={i} delay={i * 80} className="bg-white border border-hairline rounded-sm p-6 flex gap-4">
+              <Reveal key={i} delay={i * 80} fullHeight className="bg-white border border-hairline rounded-sm p-6 flex gap-4">
                 <sign.icon size={22} className="text-forest shrink-0 mt-0.5" strokeWidth={1.75} />
                 <p className="text-[15px] text-ink/90 leading-relaxed">{sign.text}</p>
               </Reveal>

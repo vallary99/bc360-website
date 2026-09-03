@@ -4,16 +4,18 @@ import { useState } from "react";
 import { site } from "@/lib/site";
 
 const serviceOptions = [
-  "Stuck Approval",
+  "Construction Approvals (general)",
   "Land Subdivision",
   "Title Deed Transfer",
+  "Land Survey Services",
+  "Change of Use",
   "Architectural Approval",
   "Structural Approval",
   "NEMA Approval",
   "NCA Approval",
-  "Change of Use",
   "Mortgage / Bank Approval",
   "Approval Verification",
+  "Stuck Approval",
   "Other",
 ];
 

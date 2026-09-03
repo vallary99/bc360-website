@@ -22,7 +22,7 @@ export const locations: Location[] = [
       "That growth has also meant longer queues and more scrutiny on applications at the county level, which is where applications most often stall.",
     ],
     areasServed: ["Ruiru", "Thika", "Kikuyu", "Limuru", "Juja", "Kiambu Town"],
-    relevantServices: ["stuck-approvals", "land-subdivision", "title-deed-transfer", "construction-approvals"],
+    relevantServices: ["construction-approvals", "land-subdivision", "title-deed-transfer", "stuck-approvals"],
     faqs: [
       { q: "Do you assist with approvals in Kiambu?", a: "Yes. We support clients with construction approvals, land subdivision, title transfer and stuck applications across Kiambu County, including its main towns." },
       { q: "Why do building approvals get delayed in Kiambu?", a: "Common reasons include incomplete documentation, high application volumes at the county office, or unclear requirements for the specific zoning of a plot. We review each case individually rather than assuming a single cause." },
@@ -44,7 +44,7 @@ export const locations: Location[] = [
       "Because of that volume, applications can move slowly or lose momentum without a clear reason, which is why many of our stuck approval enquiries come from Nairobi-based projects.",
     ],
     areasServed: ["Westlands", "Karen", "Langata", "Kasarani", "Embakasi", "Ruaraka", "Dagoretti"],
-    relevantServices: ["stuck-approvals", "construction-approvals", "bank-mortgage-approvals", "title-deed-transfer"],
+    relevantServices: ["construction-approvals", "bank-mortgage-approvals", "title-deed-transfer", "stuck-approvals"],
     faqs: [
       { q: "Do you serve Nairobi?", a: "Yes. We work with property owners and developers across Nairobi County, including stuck approval reviews, construction approvals, and bank/mortgage-related documentation." },
       { q: "How long does a building approval take in Nairobi?", a: "It varies widely depending on the project, documentation completeness and the specific office handling it. We can give a more informed estimate once we review your application." },
@@ -66,7 +66,7 @@ export const locations: Location[] = [
       "Construction approvals in the county's growing towns follow the same core requirements as elsewhere, applied through the relevant county planning office.",
     ],
     areasServed: ["Murang'a Town", "Kenol", "Kangema", "Kandara", "Maragua"],
-    relevantServices: ["land-subdivision", "title-deed-transfer", "stuck-approvals", "construction-approvals"],
+    relevantServices: ["construction-approvals", "land-subdivision", "title-deed-transfer", "stuck-approvals"],
     faqs: [
       { q: "Do you work in Murang'a?", a: "Yes. We assist property owners in Murang'a County with land subdivision, title transfer, construction approvals and stuck applications." },
       { q: "What is required for land subdivision in Murang'a?", a: "Requirements depend on the parcel, its zoning and its current registration, and generally involve survey work and county planning approval. We review each parcel individually." },
@@ -88,7 +88,7 @@ export const locations: Location[] = [
       "We support clients navigating the county's construction approval and land registry processes wherever an application has stalled or requires guidance.",
     ],
     areasServed: ["Nakuru Town", "Naivasha", "Njoro", "Molo", "Gilgil"],
-    relevantServices: ["construction-approvals", "stuck-approvals", "land-subdivision", "bank-mortgage-approvals"],
+    relevantServices: ["construction-approvals", "land-subdivision", "bank-mortgage-approvals", "stuck-approvals"],
     faqs: [
       { q: "Do you work in Nakuru and Naivasha?", a: "Yes. We assist clients across Nakuru County, including Nakuru Town and Naivasha, with construction approvals, stuck applications and land-related compliance." },
     ],

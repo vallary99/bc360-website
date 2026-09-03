@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ImageWithSkeleton from "./ImageWithSkeleton";
 import { ShieldCheck, MapPinned, MessagesSquare, FileSearch } from "lucide-react";
 
 const points = [
@@ -28,13 +28,13 @@ export default function TrustSection() {
   return (
     <section className="border-b border-hairline">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20 grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:items-stretch">
-        <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full w-full overflow-hidden rounded-sm border border-hairline order-2 lg:order-1">
-          <Image
-            src="https://images.unsplash.com/photo-1609867271967-a82f85c48531?fm=jpg&q=70&w=1200&auto=format&fit=crop"
-            alt="Construction site with structural work and scaffolding in progress"
+        <div className="relative aspect-[3/4] lg:aspect-auto lg:h-full w-full overflow-hidden rounded-sm border border-hairline order-2 lg:order-1">
+          <ImageWithSkeleton
+            src="/photos/team-review.jpg"
+            alt="A member of the Build Compliance 360 team"
             fill
             sizes="(min-width: 1024px) 45vw, 90vw"
-            className="object-cover"
+            className="object-cover object-[50%_15%]"
           />
         </div>
 

@@ -7,6 +7,6 @@ export const site = {
   phoneIntl: "254719222226", // digits only, international format, no leading +
   whatsappMessage: "Hello, I would like to make an inquiry",
   description:
-    "Build Compliance 360 helps property owners, developers and mortgage clients navigate construction approvals, land subdivision, title deed transfers and compliance processes across Kenya.",
+    "Build Compliance 360 helps property owners, developers and mortgage clients navigate construction approvals, land subdivision, title deed transfers and compliance processes in Kiambu, Nairobi, Murang'a and Nakuru counties.",
   counties: ["Kiambu", "Nairobi", "Murang'a", "Nakuru"],
 };

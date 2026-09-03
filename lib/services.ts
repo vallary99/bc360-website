@@ -19,140 +19,6 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: "stuck-approvals",
-    title: "Stuck Approvals",
-    shortTitle: "Stuck Approvals",
-    tagline: "Has your approval been stuck?",
-    shortDescription:
-      "Get help when a building, land or compliance application has stalled and the next step is unclear.",
-    description: [
-      "A submitted application that goes quiet is one of the most stressful parts of building or developing property in Kenya. Requirements change, files sit with the wrong office, or feedback never comes back at all.",
-      "We review where your application currently stands, identify what is missing or unclear, and help you understand the realistic next steps to move it forward with the relevant county or authority.",
-    ],
-    audience: [
-      "Applications pending for longer than expected",
-      "No clear feedback after submission",
-      "Uncertainty about outstanding requirements",
-      "Conflicting information from different offices",
-    ],
-    whatWeHelpWith: [
-      "Reviewing your application file and current status",
-      "Identifying missing or incomplete documentation",
-      "Clarifying which requirements still apply",
-      "Helping you prepare a clear path to follow up",
-      "Advising on realistic next steps with the relevant authority",
-    ],
-    faqs: [
-      {
-        q: "What should I do if my building approval is stuck?",
-        a: "Start by gathering everything you have submitted so far, including reference numbers and any correspondence. We can then review the file with you, identify what is outstanding, and help you understand what a realistic next step looks like.",
-      },
-      {
-        q: "Can you guarantee my approval will be unstuck quickly?",
-        a: "No. Timelines depend on the relevant county or authority, the completeness of the file, and factors outside our control. We focus on giving you clarity and a realistic path forward rather than promising a fixed outcome.",
-      },
-      {
-        q: "Do you work directly with county offices?",
-        a: "We help clients understand requirements and prepare documentation for submission and follow-up with the relevant offices. The application itself is reviewed and decided by the relevant county or national authority.",
-      },
-    ],
-    relatedServices: ["construction-approvals", "approval-verification"],
-    ctaLabel: "Get Help With Your Approval",
-    priority: 1,
-    category: "stuck-approvals",
-    seo: {
-      title: "Stuck Building Approval in Kenya? Get Assistance | Build Compliance 360",
-      description:
-        "Is your building or land approval stuck with a county or national authority in Kenya? We review your application and help you understand the next steps.",
-    },
-  },
-  {
-    slug: "land-subdivision",
-    title: "Land Subdivision",
-    shortTitle: "Land Subdivision",
-    tagline: "Subdividing land, done properly",
-    shortDescription:
-      "Guidance through the process of subdividing land into smaller parcels for sale, development or family transfer.",
-    description: [
-      "Subdividing land in Kenya involves survey work, planning approvals and registration steps that vary by county and by the type of land involved.",
-      "We help property owners understand what a subdivision requires, coordinate the relevant documentation, and support the process through to registration of the new parcels.",
-    ],
-    audience: [
-      "Owners planning to subdivide land for sale",
-      "Families dividing inherited or shared land",
-      "Developers preparing parcels for individual titles",
-    ],
-    whatWeHelpWith: [
-      "Explaining the subdivision process for your specific parcel",
-      "Coordinating survey and mapping requirements",
-      "Preparing and submitting subdivision applications",
-      "Liaising with the relevant county planning office",
-      "Supporting the process through to registration",
-    ],
-    faqs: [
-      {
-        q: "What is required for land subdivision in Kenya?",
-        a: "Requirements vary by county, zoning and the size and use of the land, and typically involve survey work, a subdivision scheme, and approval from the relevant planning authority. We review your specific parcel before advising on what applies.",
-      },
-      {
-        q: "How long does land subdivision take?",
-        a: "Timelines depend on the county, the complexity of the parcel and how quickly documentation and approvals move through the relevant offices. We can give you a realistic picture once we understand your situation.",
-      },
-    ],
-    relatedServices: ["title-deed-transfer", "stuck-approvals"],
-    ctaLabel: "Discuss Your Subdivision",
-    priority: 2,
-    category: "land",
-    seo: {
-      title: "Land Subdivision Services in Kenya | Build Compliance 360",
-      description:
-        "Subdividing land in Kiambu, Nairobi, Murang'a or Nakuru? We guide property owners through the survey, approval and registration process.",
-    },
-  },
-  {
-    slug: "title-deed-transfer",
-    title: "Title Deed Transfer",
-    shortTitle: "Title Deed Transfer",
-    tagline: "Transferring ownership, handled carefully",
-    shortDescription:
-      "Support through the documentation and process required to transfer a title deed from one party to another.",
-    description: [
-      "Transferring a title deed involves several documents and verification steps at the relevant land registry, and a missing or incorrect step can cause significant delay.",
-      "We assist clients in preparing, verifying and submitting the required documentation, and in following up with the relevant land registry office.",
-    ],
-    audience: [
-      "Buyers and sellers completing a property transfer",
-      "Families transferring land between relatives",
-      "Developers transferring subdivided parcels to new owners",
-    ],
-    whatWeHelpWith: [
-      "Explaining the title transfer process step by step",
-      "Reviewing and preparing required documentation",
-      "Submitting transfer applications to the relevant registry",
-      "Following up on the status of a submitted transfer",
-      "Flagging documentation issues before they cause delay",
-    ],
-    faqs: [
-      {
-        q: "How does a title deed transfer work?",
-        a: "In general, a transfer requires a valid sale agreement or transfer instrument, land rates and rent clearance, and submission of documents to the relevant land registry, though the specific requirements depend on the property and county involved.",
-      },
-      {
-        q: "Can you help if my transfer has stalled?",
-        a: "Yes. If a transfer has already been submitted and is delayed, this overlaps with our stuck approvals service. We review the file and help identify what is holding it up.",
-      },
-    ],
-    relatedServices: ["land-subdivision", "stuck-approvals"],
-    ctaLabel: "Get Transfer Assistance",
-    priority: 2,
-    category: "land",
-    seo: {
-      title: "Title Deed Transfer Services in Kenya | Build Compliance 360",
-      description:
-        "Assistance with title deed transfer documentation and land registry submission in Kiambu, Nairobi, Murang'a and Nakuru.",
-    },
-  },
-  {
     slug: "construction-approvals",
     title: "Construction Approvals",
     shortTitle: "Construction Approvals",
@@ -196,6 +62,180 @@ export const services: Service[] = [
     },
   },
   {
+    slug: "land-subdivision",
+    title: "Land Subdivision",
+    shortTitle: "Land Subdivision",
+    tagline: "Subdividing land, done properly",
+    shortDescription:
+      "Guidance through the process of subdividing land into smaller parcels for sale, development or family transfer.",
+    description: [
+      "Subdividing land in Kenya involves survey work, planning approvals and registration steps that vary by county and by the type of land involved.",
+      "We help property owners understand what a subdivision requires, coordinate the relevant documentation, and support the process through to registration of the new parcels.",
+    ],
+    audience: [
+      "Owners planning to subdivide land for sale",
+      "Families dividing inherited or shared land",
+      "Developers preparing parcels for individual titles",
+    ],
+    whatWeHelpWith: [
+      "Explaining the subdivision process for your specific parcel",
+      "Coordinating survey and mapping requirements",
+      "Preparing and submitting subdivision applications",
+      "Liaising with the relevant county planning office",
+      "Supporting the process through to registration",
+    ],
+    faqs: [
+      {
+        q: "What is required for land subdivision in Kenya?",
+        a: "Requirements vary by county, zoning and the size and use of the land, and typically involve survey work, a subdivision scheme, and approval from the relevant planning authority. We review your specific parcel before advising on what applies.",
+      },
+      {
+        q: "How long does land subdivision take?",
+        a: "Timelines depend on the county, the complexity of the parcel and how quickly documentation and approvals move through the relevant offices. We can give you a realistic picture once we understand your situation.",
+      },
+    ],
+    relatedServices: ["title-deed-transfer", "stuck-approvals"],
+    ctaLabel: "Discuss Your Subdivision",
+    priority: 1,
+    category: "land",
+    seo: {
+      title: "Land Subdivision Services in Kenya | Build Compliance 360",
+      description:
+        "Subdividing land in Kiambu, Nairobi, Murang'a or Nakuru? We guide property owners through the survey, approval and registration process.",
+    },
+  },
+  {
+    slug: "title-deed-transfer",
+    title: "Title Deed Transfer",
+    shortTitle: "Title Deed Transfer",
+    tagline: "Transferring ownership, handled carefully",
+    shortDescription:
+      "Support through the documentation and process required to transfer a title deed from one party to another.",
+    description: [
+      "Transferring a title deed involves several documents and verification steps at the relevant land registry, and a missing or incorrect step can cause significant delay.",
+      "We assist clients in preparing, verifying and submitting the required documentation, and in following up with the relevant land registry office.",
+    ],
+    audience: [
+      "Buyers and sellers completing a property transfer",
+      "Families transferring land between relatives",
+      "Developers transferring subdivided parcels to new owners",
+    ],
+    whatWeHelpWith: [
+      "Explaining the title transfer process step by step",
+      "Reviewing and preparing required documentation",
+      "Submitting transfer applications to the relevant registry",
+      "Following up on the status of a submitted transfer",
+      "Flagging documentation issues before they cause delay",
+    ],
+    faqs: [
+      {
+        q: "How does a title deed transfer work?",
+        a: "In general, a transfer requires a valid sale agreement or transfer instrument, land rates and rent clearance, and submission of documents to the relevant land registry, though the specific requirements depend on the property and county involved.",
+      },
+      {
+        q: "Can you help if my transfer has stalled?",
+        a: "Yes. If a transfer has already been submitted and is delayed, this overlaps with our stuck approvals service. We review the file and help identify what is holding it up.",
+      },
+    ],
+    relatedServices: ["land-subdivision", "stuck-approvals"],
+    ctaLabel: "Get Transfer Assistance",
+    priority: 1,
+    category: "land",
+    seo: {
+      title: "Title Deed Transfer Services in Kenya | Build Compliance 360",
+      description:
+        "Assistance with title deed transfer documentation and land registry submission in Kiambu, Nairobi, Murang'a and Nakuru.",
+    },
+  },
+  {
+    slug: "land-survey-services",
+    title: "Land Survey Services",
+    shortTitle: "Land Survey",
+    tagline: "Accurate boundaries, properly recorded",
+    shortDescription:
+      "Coordination of licensed survey work to confirm boundaries, area and beacon placement for subdivision, transfer or construction.",
+    description: [
+      "Accurate survey work underpins almost everything else in a property transaction or construction project, from confirming a parcel's true boundaries to preparing the mutation and deed plans a subdivision or transfer depends on.",
+      "We coordinate with licensed land surveyors to get the right survey done for your situation, whether that's boundary confirmation, beacon re-establishment, topographical survey ahead of design, or the survey work a subdivision requires.",
+      "Because survey requirements depend on the parcel, its registration history and what you're trying to achieve, we start by understanding your specific situation before recommending what kind of survey is actually needed.",
+    ],
+    audience: [
+      "Owners confirming or disputing a boundary",
+      "Developers needing topographical survey before design work begins",
+      "Anyone subdividing or transferring land where beacons are missing or unclear",
+    ],
+    whatWeHelpWith: [
+      "Coordinating with a licensed land surveyor on your behalf",
+      "Confirming what type of survey your situation requires",
+      "Boundary and beacon re-establishment",
+      "Topographical survey ahead of architectural design",
+      "Preparing survey documentation needed for subdivision or transfer",
+    ],
+    faqs: [
+      {
+        q: "Do I need a survey before I can subdivide land?",
+        a: "Yes, subdivision requires accurate survey work to define the new parcel boundaries before a mutation can be registered. We coordinate this as part of the subdivision process.",
+      },
+      {
+        q: "What if my beacons are missing or disputed?",
+        a: "A licensed surveyor can re-establish beacons from the official survey records. We help coordinate this and clarify the next steps if a boundary is genuinely in dispute.",
+      },
+      {
+        q: "Can survey work help before I start building?",
+        a: "Yes. A topographical survey gives your architect and engineer accurate information about the site, which helps avoid design issues or approval complications later.",
+      },
+    ],
+    relatedServices: ["land-subdivision", "title-deed-transfer"],
+    ctaLabel: "Discuss Your Survey Needs",
+    priority: 1,
+    category: "land",
+    seo: {
+      title: "Land Survey Services Kenya | Build Compliance 360",
+      description: "Coordination of licensed land survey work for subdivision, transfer and construction projects in Kiambu, Nairobi, Murang'a and Nakuru.",
+    },
+  },
+  {
+    slug: "change-of-use",
+    title: "Change of Use",
+    shortTitle: "Change of Use",
+    tagline: "Changing how a property is used",
+    shortDescription: "Guidance through the approval process for changing a property's approved use.",
+    description: [
+      "Changing a property from its currently approved use, for example from residential to commercial, requires formal approval from the relevant county planning office.",
+      "We help clients understand the requirements for their specific property and support the application through to submission and follow-up.",
+      "Because change of use decisions are tied to a county's zoning and planning framework, what's realistic for one property or area may not apply to another, which is why we review the specific site before advising.",
+    ],
+    audience: [
+      "Owners converting property use",
+      "Developers repurposing existing buildings",
+      "Owners who acquired a property already being used differently from its approved designation",
+    ],
+    whatWeHelpWith: [
+      "Assessing what a change of use requires for your property",
+      "Checking the property's current zoning and approved use",
+      "Preparing the required application documentation",
+      "Submitting and following up with the relevant county office",
+    ],
+    faqs: [
+      {
+        q: "What is change of use in property development?",
+        a: "It is the formal process of changing a property's legally approved use, such as from residential to commercial, which requires county planning approval.",
+      },
+      {
+        q: "What if a property is already being used differently from its approved use?",
+        a: "This is worth addressing directly rather than leaving unresolved, since it can complicate a future sale, mortgage or bank verification. We can review the situation and advise on realistic next steps.",
+      },
+    ],
+    relatedServices: ["construction-approvals", "stuck-approvals"],
+    ctaLabel: "Discuss Your Approval",
+    priority: 2,
+    category: "construction-approvals",
+    seo: {
+      title: "Change of Use Approval Kenya | Build Compliance 360",
+      description: "Support with change of use approval for property in Kiambu, Nairobi, Murang'a and Nakuru.",
+    },
+  },
+  {
     slug: "architectural-approval",
     title: "Architectural Approval",
     shortTitle: "Architectural",
@@ -234,7 +274,7 @@ export const services: Service[] = [
     ],
     relatedServices: ["structural-approval", "construction-approvals", "stuck-approvals"],
     ctaLabel: "Discuss Your Approval",
-    priority: 3,
+    priority: 2,
     category: "construction-approvals",
     seo: {
       title: "Architectural Approval Services Kenya | Build Compliance 360",
@@ -276,7 +316,7 @@ export const services: Service[] = [
     ],
     relatedServices: ["architectural-approval", "construction-approvals"],
     ctaLabel: "Discuss Your Approval",
-    priority: 3,
+    priority: 2,
     category: "construction-approvals",
     seo: {
       title: "Structural Approval Services Kenya | Build Compliance 360",
@@ -317,7 +357,7 @@ export const services: Service[] = [
     ],
     relatedServices: ["construction-approvals", "nca-approval"],
     ctaLabel: "Discuss Your Approval",
-    priority: 3,
+    priority: 2,
     category: "construction-approvals",
     seo: {
       title: "NEMA Approval for Construction Projects Kenya | Build Compliance 360",
@@ -358,52 +398,11 @@ export const services: Service[] = [
     ],
     relatedServices: ["construction-approvals", "nema-approval"],
     ctaLabel: "Discuss Your Approval",
-    priority: 3,
+    priority: 2,
     category: "construction-approvals",
     seo: {
       title: "NCA Requirements for Construction Projects Kenya | Build Compliance 360",
       description: "Guidance on National Construction Authority requirements and registration for construction projects in Kenya.",
-    },
-  },
-  {
-    slug: "change-of-use",
-    title: "Change of Use",
-    shortTitle: "Change of Use",
-    tagline: "Changing how a property is used",
-    shortDescription: "Guidance through the approval process for changing a property's approved use.",
-    description: [
-      "Changing a property from its currently approved use, for example from residential to commercial, requires formal approval from the relevant county planning office.",
-      "We help clients understand the requirements for their specific property and support the application through to submission and follow-up.",
-      "Because change of use decisions are tied to a county's zoning and planning framework, what's realistic for one property or area may not apply to another, which is why we review the specific site before advising.",
-    ],
-    audience: [
-      "Owners converting property use",
-      "Developers repurposing existing buildings",
-      "Owners who acquired a property already being used differently from its approved designation",
-    ],
-    whatWeHelpWith: [
-      "Assessing what a change of use requires for your property",
-      "Checking the property's current zoning and approved use",
-      "Preparing the required application documentation",
-      "Submitting and following up with the relevant county office",
-    ],
-    faqs: [
-      {
-        q: "What is change of use in property development?",
-        a: "It is the formal process of changing a property's legally approved use, such as from residential to commercial, which requires county planning approval.",
-      },
-      {
-        q: "What if a property is already being used differently from its approved use?",
-        a: "This is worth addressing directly rather than leaving unresolved, since it can complicate a future sale, mortgage or bank verification. We can review the situation and advise on realistic next steps.",
-      },
-    ],
-    relatedServices: ["construction-approvals", "stuck-approvals"],
-    ctaLabel: "Discuss Your Approval",
-    priority: 3,
-    category: "construction-approvals",
-    seo: {
-      title: "Change of Use Approval Kenya | Build Compliance 360",
-      description: "Support with change of use approval for property in Kiambu, Nairobi, Murang'a and Nakuru.",
     },
   },
   {
@@ -463,6 +462,54 @@ export const services: Service[] = [
       description: "Independent verification of construction and land approvals for mortgage, bank and due-diligence purposes in Kenya.",
     },
   },
+  {
+    slug: "stuck-approvals",
+    title: "Stuck Approvals",
+    shortTitle: "Stuck Approvals",
+    tagline: "Has your approval been stuck?",
+    shortDescription:
+      "Get help when a building, land or compliance application has stalled and the next step is unclear.",
+    description: [
+      "A submitted application that goes quiet is one of the most stressful parts of building or developing property in Kenya. Requirements change, files sit with the wrong office, or feedback never comes back at all.",
+      "We review where your application currently stands, identify what is missing or unclear, and help you understand the realistic next steps to move it forward with the relevant county or authority.",
+    ],
+    audience: [
+      "Applications pending for longer than expected",
+      "No clear feedback after submission",
+      "Uncertainty about outstanding requirements",
+      "Conflicting information from different offices",
+    ],
+    whatWeHelpWith: [
+      "Reviewing your application file and current status",
+      "Identifying missing or incomplete documentation",
+      "Clarifying which requirements still apply",
+      "Helping you prepare a clear path to follow up",
+      "Advising on realistic next steps with the relevant authority",
+    ],
+    faqs: [
+      {
+        q: "What should I do if my building approval is stuck?",
+        a: "Start by gathering everything you have submitted so far, including reference numbers and any correspondence. We can then review the file with you, identify what is outstanding, and help you understand what a realistic next step looks like.",
+      },
+      {
+        q: "Can you guarantee my approval will be unstuck quickly?",
+        a: "No. Timelines depend on the relevant county or authority, the completeness of the file, and factors outside our control. We focus on giving you clarity and a realistic path forward rather than promising a fixed outcome.",
+      },
+      {
+        q: "Do you work directly with county offices?",
+        a: "We help clients understand requirements and prepare documentation for submission and follow-up with the relevant offices. The application itself is reviewed and decided by the relevant county or national authority.",
+      },
+    ],
+    relatedServices: ["construction-approvals", "approval-verification"],
+    ctaLabel: "Get Help With Your Approval",
+    priority: 2,
+    category: "stuck-approvals",
+    seo: {
+      title: "Stuck Building Approval in Kenya? Get Assistance | Build Compliance 360",
+      description:
+        "Is your building or land approval stuck with a county or national authority in Kenya? We review your application and help you understand the next steps.",
+    },
+  },
 ];
 
 export function getServiceBySlug(slug: string) {
@@ -475,6 +522,6 @@ export function getRelatedServices(service: Service) {
     .filter((s): s is Service => Boolean(s));
 }
 
-export const featuredServices = ["stuck-approvals", "land-subdivision", "title-deed-transfer", "construction-approvals", "bank-mortgage-approvals"]
+export const featuredServices = ["construction-approvals", "land-subdivision", "title-deed-transfer", "land-survey-services", "stuck-approvals"]
   .map((slug) => getServiceBySlug(slug)!)
   .filter(Boolean);

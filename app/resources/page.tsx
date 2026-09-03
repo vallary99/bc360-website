@@ -9,7 +9,7 @@ import { services } from "@/lib/services";
 import { articles } from "@/lib/articles";
 
 export const metadata: Metadata = {
-  title: "Resources",
+  title: "Guides: Construction Approvals & Property Compliance",
   description:
     "Practical guidance on construction approvals, land subdivision, title deed transfers and compliance processes in Kenya.",
   alternates: { canonical: "/resources" },
@@ -35,7 +35,7 @@ export default function ResourcesPage() {
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
           {articles.map((a, i) => (
-            <Reveal key={a.slug} delay={i * 70}>
+            <Reveal key={a.slug} delay={i * 70} fullHeight>
               <ArticleCard article={a} />
             </Reveal>
           ))}
@@ -47,7 +47,7 @@ export default function ResourcesPage() {
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
             {services.map((s, i) => (
-              <Reveal key={s.slug} delay={i * 50}>
+              <Reveal key={s.slug} delay={i * 50} fullHeight>
                 <Link
                   href={`/services/${s.slug}`}
                   className="h-full flex flex-col border border-hairline rounded-sm p-6 hover:border-forest hover:-translate-y-0.5 transition-all"
