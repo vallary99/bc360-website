@@ -23,22 +23,57 @@ const counties = ["Kiambu", "Nairobi", "Murang'a", "Nakuru", "Other"];
 
 export default function ContactForm({ defaultService }: { defaultService?: string }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
-    const contact = String(data.get("email") || "").trim();
+    const email = String(data.get("email") || "").trim();
 
-    if (!name || !contact) {
-      setError("Please share your name and either an email or phone number so we can reach you.");
+    if (!name || !email) {
+      setError("Please share your name and email so we can reach you.");
       return;
     }
+
     setError(null);
-    // In production this posts to a lead endpoint / CRM / email service.
-    setSubmitted(true);
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: String(data.get("phone") || "").trim(),
+          county: String(data.get("county") || "").trim(),
+          service: String(data.get("service") || "").trim(),
+          message: String(data.get("message") || "").trim(),
+          company: String(data.get("company") || "").trim(), // honeypot
+        }),
+      });
+
+      const result = await res.json().catch(() => ({ ok: false }));
+
+      if (!res.ok || !result.ok) {
+        setError(
+          result.error ||
+            `Something went wrong sending your enquiry. Please try again or email us directly at ${site.email}.`
+        );
+        setSubmitting(false);
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError(
+        `Something went wrong sending your enquiry. Please check your connection and try again, or email us directly at ${site.email}.`
+      );
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -64,6 +99,13 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
           {error}
         </p>
       )}
+
+      {/* Honeypot: hidden from real users, bots often fill every field */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="company">Company</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className="block text-[13px] font-medium text-ink mb-1.5">
@@ -154,9 +196,10 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
 
       <button
         type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center bg-forest text-white font-medium px-7 py-3.5 rounded-sm hover:bg-[#125e18] transition-colors"
+        disabled={submitting}
+        className="w-full sm:w-auto inline-flex items-center justify-center bg-forest text-white font-medium px-7 py-3.5 rounded-sm hover:bg-[#125e18] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        Send Enquiry
+        {submitting ? "Sending..." : "Send Enquiry"}
       </button>
     </form>
   );

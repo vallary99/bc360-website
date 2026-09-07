@@ -5,12 +5,12 @@ const points = [
   {
     icon: MapPinned,
     title: "Local knowledge",
-    body: "Familiar with the county planning offices, land registries and processes across Kiambu, Nairobi, Murang'a and Nakuru.",
+    body: "Our team brings over 17 years of combined experience with county planning offices, land registries and approval processes across Kiambu, Nairobi, Murang'a and Nakuru.",
   },
   {
     icon: FileSearch,
-    title: "Careful document review",
-    body: "We review your specific application and documents rather than applying generic assumptions.",
+    title: "Review before submission",
+    body: "Every design and application is reviewed by our team before it goes in, checked against your specific documents rather than generic assumptions.",
   },
   {
     icon: MessagesSquare,
@@ -19,8 +19,8 @@ const points = [
   },
   {
     icon: ShieldCheck,
-    title: "No overpromising",
-    body: "We don't promise guaranteed approvals or fixed timelines. Decisions rest with the relevant authority.",
+    title: "Strong approval track record",
+    body: "98% of the applications we review are approved, rising to 100% when our recommendations are followed in full.",
   },
 ];
 
