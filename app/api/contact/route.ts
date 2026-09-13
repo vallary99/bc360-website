@@ -17,6 +17,17 @@ type ContactPayload = {
 
 const MIN_SECONDS_TO_SUBMIT = 3;
 
+// Matches the previous PHP contact form's conventions, kept for
+// consistency with existing inbox filters/rules that may reference them.
+const SITE_LABEL = "WEB ENQUIRIES";
+// NOTE: the previous PHP version sent unauthenticated via the server's
+// local mail relay, so it could freely set From to an address that isn't
+// a real mailbox. We now authenticate via SMTP as SMTP_USER, and some
+// mail servers reject or silently rewrite a From address that doesn't
+// match the authenticated account. If mail bounces or never arrives
+// after deploying, change FROM_EMAIL below to SMTP_USER instead.
+const FROM_EMAIL = "no-reply@buildcompliance360.com";
+
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, "&amp;")
@@ -147,10 +158,10 @@ export async function POST(request: Request) {
     `;
 
     await transporter.sendMail({
-      from: `"${site.name} Website" <${SMTP_USER}>`,
+      from: `"${SITE_LABEL}" <${FROM_EMAIL}>`,
       to: toEmail,
       replyTo: email,
-      subject: `New enquiry from ${name}${service ? `: ${service}` : ""}`,
+      subject: `[${SITE_LABEL}] New enquiry: ${service || "General"}`,
       text: textBody,
       html: htmlBody,
     });
