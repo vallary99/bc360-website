@@ -25,7 +25,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  // Timestamp the form rendered, sent along so contact.php can reject
+  // Timestamp the form rendered, sent along so the API route can reject
   // submissions that arrive implausibly fast (a basic anti-bot check).
   const loadedAt = useRef(0);
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
     setSubmitting(true);
 
     try {
-      const res = await fetch("/contact.php", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
