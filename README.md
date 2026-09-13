@@ -2,7 +2,7 @@
 
 Marketing website for Build Compliance 360, a construction, land and
 regulatory compliance consultancy in Kenya. Built with Next.js (App
-Router), TypeScript and Tailwind CSS.
+Router), TypeScript and Tailwind CSS, exported as a fully static site.
 
 ## Getting started
 
@@ -13,43 +13,55 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Deployment: static export
+
+`next.config.ts` sets `output: "export"`, so `npm run build` produces a
+plain static site in `out/`, no Node.js server required. Upload the
+contents of `out/` to your host's document root (e.g. `public_html` on
+cPanel) via File Manager or FTP, the same as any plain HTML site.
+
 ## Contact form email setup
 
-The contact form (`/contact`) posts to `app/api/contact/route.ts`, which
-sends the enquiry by email via SMTP using
-[nodemailer](https://nodemailer.com/). Without SMTP credentials
-configured, the API route will return an error and the form will show
-a friendly failure message instead of silently pretending to succeed.
+The contact form (`/contact`) posts to `contact.php` (in `public/`, so
+it's copied into `out/` as-is by the static export and ends up sitting
+alongside the rest of the site at the domain root). It:
 
-To enable it:
+- Validates required fields (name, a properly formatted email) server-side
+- Rejects spam via a honeypot field and a minimum-time-to-submit check
+- Sends the enquiry using PHP's built-in `mail()` function
 
-1. Copy `.env.example` to `.env.local`.
-2. Fill in `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` from your
-   email provider (Google Workspace, Zoho Mail, your web host's mail
-   server, or a transactional email service's SMTP relay).
-3. `CONTACT_TO_EMAIL` controls where enquiries land; it defaults to
-   `enquiries@buildcompliance360.com` if left unset.
-4. Restart the dev server (or redeploy) after changing env vars.
+Configured to send to and from `enquiries@buildcompliance360.com`. If
+the live domain ever changes, open `public/contact.php` and check:
 
-On your hosting platform (Vercel, etc.), set the same variables under
-its environment variables settings rather than committing `.env.local`.
+1. `$toEmail` and `$fromEmail`: both currently set to
+   `enquiries@buildcompliance360.com`. Sending "From" the same address
+   mail is delivered "to" is fine for PHP's `mail()`; just keep it an
+   address on your own domain, most mail servers spam-flag or reject
+   mail claiming to be From a domain it isn't actually sent through.
+2. `$allowedOrigins`: update if the live domain differs from
+   `buildcompliance360.com` / `www.buildcompliance360.com`.
 
-**Gmail / Google Workspace note:** you'll need an
-[App Password](https://support.google.com/accounts/answer/185833), not
-the account's normal login password, and 2-Step Verification must be
-enabled on the account first.
+This requires a PHP-capable host (virtually all cPanel hosting
+qualifies) but no Node.js runtime at all. If `mail()` proves unreliable
+on your specific host (shared hosting sometimes flags it as spam more
+than an authenticated SMTP send would), swap the `mail()` call in
+`contact.php` for [PHPMailer](https://github.com/PHPMailer/PHPMailer)
+configured with real SMTP credentials, the surrounding validation and
+anti-bot logic doesn't need to change either way.
 
 ## Project structure
 
-- `app/` : pages and API routes (Next.js App Router)
+- `app/` : pages (Next.js App Router)
 - `components/` : shared UI components
 - `lib/` : content data (services, locations, articles) and site config
 - `public/brand/` : logo assets
 - `public/photos/` : team/content photography
+- `public/contact.php` : contact form handler (see above)
 
 ## Build
 
 ```bash
 npm run build
-npm run start
 ```
+
+Deployable output lands in `out/`.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { site } from "@/lib/site";
 
 const serviceOptions = [
@@ -25,6 +25,12 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Timestamp the form rendered, sent along so contact.php can reject
+  // submissions that arrive implausibly fast (a basic anti-bot check).
+  const loadedAt = useRef(0);
+  useEffect(() => {
+    loadedAt.current = Date.now();
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,7 +48,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
     setSubmitting(true);
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/contact.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -53,6 +59,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
           service: String(data.get("service") || "").trim(),
           message: String(data.get("message") || "").trim(),
           company: String(data.get("company") || "").trim(), // honeypot
+          loadedAt: loadedAt.current,
         }),
       });
 

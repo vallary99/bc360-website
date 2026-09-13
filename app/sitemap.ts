@@ -4,6 +4,8 @@ import { services } from "@/lib/services";
 import { locations } from "@/lib/locations";
 import { articles } from "@/lib/articles";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
