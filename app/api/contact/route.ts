@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { site } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -20,12 +20,11 @@ const MIN_SECONDS_TO_SUBMIT = 3;
 // Matches the previous PHP contact form's conventions, kept for
 // consistency with existing inbox filters/rules that may reference them.
 const SITE_LABEL = "WEB ENQUIRIES";
-// NOTE: the previous PHP version sent unauthenticated via the server's
-// local mail relay, so it could freely set From to an address that isn't
-// a real mailbox. We now authenticate via SMTP as SMTP_USER, and some
-// mail servers reject or silently rewrite a From address that doesn't
-// match the authenticated account. If mail bounces or never arrives
-// after deploying, change FROM_EMAIL below to SMTP_USER instead.
+
+// Sent via Resend's API (HTTPS, not raw SMTP), so this address just needs
+// to be on a domain verified in Resend (buildcompliance360.com), it does
+// not need to be a real, checkable mailbox. Unlike the old SMTP setup,
+// there's no "must match the authenticated account" constraint here.
 const FROM_EMAIL = "no-reply@buildcompliance360.com";
 
 function escapeHtml(value: string) {
@@ -86,19 +85,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const {
-    SMTP_HOST,
-    SMTP_PORT,
-    SMTP_USER,
-    SMTP_PASS,
-    SMTP_SECURE,
-    CONTACT_TO_EMAIL,
-  } = process.env;
+  const { RESEND_API_KEY, CONTACT_TO_EMAIL } = process.env;
 
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
-    console.error(
-      "Contact form: missing SMTP configuration (SMTP_HOST / SMTP_USER / SMTP_PASS)."
-    );
+  if (!RESEND_API_KEY) {
+    console.error("Contact form: missing RESEND_API_KEY.");
     return NextResponse.json(
       {
         ok: false,
@@ -109,63 +99,47 @@ export async function POST(request: Request) {
   }
 
   const toEmail = CONTACT_TO_EMAIL || site.email;
+  const resend = new Resend(RESEND_API_KEY);
+
+  const fields: [string, string][] = [
+    ["Name", name],
+    ["Email", email],
+    ["Phone", phone || "Not provided"],
+    ["County", county || "Not specified"],
+    ["Service needed", service || "Not specified"],
+  ];
+
+  const textBody = [
+    "New enquiry from the Build Compliance 360 website contact form.",
+    "",
+    ...fields.map(([label, value]) => `${label}: ${value}`),
+    "",
+    "Message:",
+    message || "(No message provided)",
+  ].join("\n");
+
+  const htmlBody = `
+    <div style="font-family: Arial, sans-serif; font-size: 15px; color: #25312d; line-height: 1.6;">
+      <h2 style="color: #16771e; margin-bottom: 16px;">New website enquiry</h2>
+      <table cellpadding="6" cellspacing="0" style="border-collapse: collapse;">
+        ${fields
+          .map(
+            ([label, value]) => `
+          <tr>
+            <td style="font-weight: bold; vertical-align: top; padding-right: 12px;">${escapeHtml(label)}</td>
+            <td>${escapeHtml(value)}</td>
+          </tr>`
+          )
+          .join("")}
+      </table>
+      <p style="font-weight: bold; margin-top: 20px; margin-bottom: 6px;">Message</p>
+      <p style="white-space: pre-wrap; margin: 0;">${escapeHtml(message || "(No message provided)")}</p>
+    </div>
+  `;
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT ? parseInt(SMTP_PORT, 10) : 587,
-      secure: SMTP_SECURE === "true", // true for port 465, false for 587/others
-      auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS,
-      },
-      // Explicit timeouts so a slow/unreachable mail server fails fast
-      // with a real, logged error instead of hanging until Vercel's
-      // function execution limit kills it (which surfaces to visitors
-      // as an opaque 502 with no useful information in the response).
-      connectionTimeout: 8000, // time to establish the TCP connection
-      greetingTimeout: 8000, // time to wait for the server's initial greeting
-      socketTimeout: 8000, // time to wait on an idle socket after that
-    });
-
-    const fields: [string, string][] = [
-      ["Name", name],
-      ["Email", email],
-      ["Phone", phone || "Not provided"],
-      ["County", county || "Not specified"],
-      ["Service needed", service || "Not specified"],
-    ];
-
-    const textBody = [
-      "New enquiry from the Build Compliance 360 website contact form.",
-      "",
-      ...fields.map(([label, value]) => `${label}: ${value}`),
-      "",
-      "Message:",
-      message || "(No message provided)",
-    ].join("\n");
-
-    const htmlBody = `
-      <div style="font-family: Arial, sans-serif; font-size: 15px; color: #25312d; line-height: 1.6;">
-        <h2 style="color: #16771e; margin-bottom: 16px;">New website enquiry</h2>
-        <table cellpadding="6" cellspacing="0" style="border-collapse: collapse;">
-          ${fields
-            .map(
-              ([label, value]) => `
-            <tr>
-              <td style="font-weight: bold; vertical-align: top; padding-right: 12px;">${escapeHtml(label)}</td>
-              <td>${escapeHtml(value)}</td>
-            </tr>`
-            )
-            .join("")}
-        </table>
-        <p style="font-weight: bold; margin-top: 20px; margin-bottom: 6px;">Message</p>
-        <p style="white-space: pre-wrap; margin: 0;">${escapeHtml(message || "(No message provided)")}</p>
-      </div>
-    `;
-
-    await transporter.sendMail({
-      from: `"${SITE_LABEL}" <${FROM_EMAIL}>`,
+    const { data, error } = await resend.emails.send({
+      from: `${SITE_LABEL} <${FROM_EMAIL}>`,
       to: toEmail,
       replyTo: email,
       subject: `[${SITE_LABEL}] New enquiry: ${service || "General"}`,
@@ -173,11 +147,28 @@ export async function POST(request: Request) {
       html: htmlBody,
     });
 
+    if (error) {
+      // Resend returns errors as a value rather than throwing, so this is
+      // the normal path for "the API call went through but Resend
+      // rejected it" (e.g. domain not verified yet, invalid from address).
+      console.error(`Contact form: Resend rejected the send. ${JSON.stringify(error)}`);
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Something went wrong sending your enquiry. Please try again or email us directly.",
+        },
+        { status: 502 }
+      );
+    }
+
+    console.log(`Contact form: email sent via Resend, id=${data?.id}`);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    const code = err && typeof err === "object" && "code" in err ? err.code : undefined;
+    // A thrown error here means the request to Resend's API itself failed
+    // (network issue, invalid API key format, etc.), rather than Resend
+    // processing it and declining.
     const message = err instanceof Error ? err.message : String(err);
-    console.error(`Contact form: failed to send email. code=${code} message=${message}`, err);
+    console.error(`Contact form: request to Resend failed. message=${message}`, err);
     return NextResponse.json(
       {
         ok: false,
