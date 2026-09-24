@@ -119,6 +119,13 @@ export async function POST(request: Request) {
         user: SMTP_USER,
         pass: SMTP_PASS,
       },
+      // Explicit timeouts so a slow/unreachable mail server fails fast
+      // with a real, logged error instead of hanging until Vercel's
+      // function execution limit kills it (which surfaces to visitors
+      // as an opaque 502 with no useful information in the response).
+      connectionTimeout: 8000, // time to establish the TCP connection
+      greetingTimeout: 8000, // time to wait for the server's initial greeting
+      socketTimeout: 8000, // time to wait on an idle socket after that
     });
 
     const fields: [string, string][] = [
@@ -168,7 +175,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Contact form: failed to send email.", err);
+    const code = err && typeof err === "object" && "code" in err ? err.code : undefined;
+    const message = err instanceof Error ? err.message : String(err);
+    console.error(`Contact form: failed to send email. code=${code} message=${message}`, err);
     return NextResponse.json(
       {
         ok: false,
