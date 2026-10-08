@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { site } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 
 const serviceOptions = [
   "Construction Approvals (general)",
@@ -74,6 +75,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
         return;
       }
 
+      trackEvent("generate_lead", { form: "contact", service: String(data.get("service") || "") });
       setSubmitted(true);
     } catch {
       setError(

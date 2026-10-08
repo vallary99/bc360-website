@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalDocument
       title="Privacy Policy"
-      lastUpdated="27 August 2026"
+      lastUpdated="8 October 2026"
       crumbLabel="Privacy Policy"
       intro={
         <p>
@@ -178,11 +178,16 @@ export default function PrivacyPolicyPage() {
           heading: "Cookies and website analytics",
           body: (
             <p>
-              Our website may use limited functional cookies necessary for it to operate correctly,
-              and may use analytics tools to understand general, aggregated usage of the site. We
-              do not use these tools to build detailed profiles for advertising purposes. You can
-              control or disable cookies through your browser settings; doing so may affect some
-              website functionality.
+              Our website uses limited functional cookies necessary for it to operate correctly. We
+              also use Google Analytics, a web analytics service provided by Google, to understand
+              how visitors use the site, such as which pages are viewed, how visitors arrive, and
+              whether an enquiry form is submitted. Google Analytics sets cookies and collects
+              information such as your approximate location, device and browser type, and pages
+              visited, which may be processed on Google&apos;s servers outside Kenya. We use this
+              information only in aggregated form to improve the site, and do not use it to build
+              advertising profiles. You can control or disable cookies through your browser
+              settings, or prevent Google Analytics from collecting your data by installing
+              Google&apos;s browser opt-out add-on; doing so may affect some website functionality.
             </p>
           ),
         },

@@ -85,6 +85,16 @@ above. Google Workspace/Gmail specifically requires an
 [App Password](https://support.google.com/accounts/answer/185833)
 rather than the normal account password.
 
+## Analytics (Google tag)
+
+The Google tag (GA4, `G-DKHMNYN88C`) loads on every page from
+`components/Analytics.tsx` using `next/script`. To point the site at a different
+property, set `NEXT_PUBLIC_GA_ID` in Vercel and redeploy (the value is inlined
+at build time).
+
+A `generate_lead` event fires when the contact form sends successfully
+(`lib/analytics.ts`); mark it as a key event in GA to track enquiries.
+
 ## Deployment
 
 Push to the connected Git branch and Vercel builds and deploys
