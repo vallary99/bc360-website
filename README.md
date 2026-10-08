@@ -87,7 +87,7 @@ rather than the normal account password.
 
 ## Analytics (Google tag)
 
-The Google tag (GA4, `G-DKHMNYN88C`) loads on every page from
+The Google tag (GA4, `G-9VKRP1TT20`) loads on every page from
 `components/Analytics.tsx` using `next/script`. To point the site at a different
 property, set `NEXT_PUBLIC_GA_ID` in Vercel and redeploy (the value is inlined
 at build time).
