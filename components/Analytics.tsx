@@ -7,7 +7,7 @@ import Script from "next/script";
  * the site at a different property. NEXT_PUBLIC_* values are
  * inlined at build time, so changing the ID in Vercel requires a redeploy.
  */
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-9VKRP1TT20";
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-FNPSHYB6F9";
 
 export default function Analytics() {
   if (!GA_ID) return null;
